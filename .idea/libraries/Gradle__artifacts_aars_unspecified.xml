@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: artifacts:aars:unspecified">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/aars/build/.transforms/c6e4d0966c77d3a43d808be1eb6e732a/kaldi-android-5.2/res" />
+      <root url="file://$PROJECT_DIR$/aars/build/.transforms/2739b5b9692d662326224f64be96fe24/jetified-kaldi-android-5.2/res" />
+      <root url="file://$PROJECT_DIR$/aars/build/.transforms/2739b5b9692d662326224f64be96fe24/jetified-kaldi-android-5.2/AndroidManifest.xml" />
+      <root url="jar://$PROJECT_DIR$/aars/build/.transforms/2739b5b9692d662326224f64be96fe24/jetified-kaldi-android-5.2/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,4 @@
+#Thu Aug 27 14:00:48 ART 2020
+base.0=/home/mariano/Desktop/AndroidStudio/TescuchoV02/app/build/intermediates/dex/release/mergeDexRelease/out/classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
