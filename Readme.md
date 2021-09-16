@@ -15,7 +15,7 @@ Los invitamos a visitar nuestro [Sitio Web](http://cistas.untref.edu.ar).
 
 ## Comunidad Tescucho
 
-Subimos a este repositorio el proyecto para Android Studio para invitar a desarrolladores que quieran actualizarlo, agregarle nuevas características o proponer cambios. 
+Subimos a este repositorio el proyecto para Android Studio para invitar a desarrolladores que quieran actualizarlo, agregarle nuevas características o proponer cambios. Para ello es posible seguir las [Instrucciones de Compilación](COMPILING.md)
 
 ## Especificaciones sobre el programa
 
