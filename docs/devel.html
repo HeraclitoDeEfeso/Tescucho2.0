@@ -37,7 +37,7 @@
 <p>La librería Vosk provee un <a href="https://github.com/alphacep/vosk-android-demo">ejemplo de uso en una aplicación para el sistema Android</a>, de donde hemos elaborado los diagramas de sequencia para reflejar la estructura dinámica que debiera seguir una actividad que la utilice.</p>
 <h3><a title="Creación de la actividad" id="user-content-creación-de-la-actividad" class="anchor" href="#creación-de-la-actividad"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Creación de la actividad</h3>
 <p>Ignorando las configuraciones de la interfaz, el ejemplo propone para el método de creación de la actividad la interacción entre entidades representada en el siguiente diagrama de secuencia:</p>
-<p><a target="_blank" rel="noopener noreferrer" href="onCreate.png"><img src="onCreate.png" alt="Diagrama de secuencia del método que crea la actividad" ></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="oncreate.png"><img src="oncreate.png" alt="Diagrama de secuencia del método que crea la actividad" ></a></p>
 <p>Como se observa, luego de la configuración de la interfaz en el estado de inicio con el método privado <a href="https://github.com/alphacep/vosk-android-demo/blob/248f40de2449a6185a9e7b3fb9d985aa5221312c/app/src/main/java/org/vosk/demo/VoskActivity.java#L152"><code>setUiState()</code></a>, se activa la bitácora de seguimiento de la librería Vosk (mediante <a href="https://github.com/alphacep/vosk-api/blob/master/android/lib/src/main/java/org/vosk/LibVosk.java"><code>LibVosk</code></a>) y verifica que posea los permisos de acceso a la grabación de audio. Si no es así, los solicita. En caso de tener ya habilitada la grabación, inicia el modelo tal cual en el diagrama siguiente:</p>
 <p><a target="_blank" rel="noopener noreferrer" href="initModel.png"><img src="initModel.png" alt="Diagrama de secuencia del método que inicia el modelo" ></a></p>
 <p>Lo anterior no es más que la deserialización del modelo (de clase <a href="https://github.com/alphacep/vosk-api/blob/master/android/lib/src/main/java/org/vosk/Model.java"><code>Model</code></a>) para la librería Vosk mediante el uso del <a href="https://github.com/alphacep/vosk-api/blob/master/android/lib/src/main/java/org/vosk/android/StorageService.java"><code>StorageService</code></a> que provee la librería, su almacenamiento en el atributo <code>model</code> y la configuración de la interfaz de usuario en caso de éxito, o el establecimiento de la interfaz en estado de error en caso de surgir algún inconveniente.</p>
@@ -201,9 +201,9 @@
 </article>
   </div>
 		<p>
-			<a href="http://jigsaw.w3.org/css-validator/check/referer">
+			<a href="https://jigsaw.w3.org/css-validator/check/referer">
 				<img id="validator"
-					src="http://jigsaw.w3.org/css-validator/images/vcss"
+					src="https://jigsaw.w3.org/css-validator/images/vcss"
 					alt="¡CSS Válido!" />
 			</a>
 		</p>
