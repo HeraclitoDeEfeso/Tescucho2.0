@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+		<title>Documentación de la Aplicación Tescucho - CISTAS Untref</title>
+		<link rel="stylesheet" href="github-markdown.css">
+		<style>
+			body {
+				box-sizing: border-box;
+				min-width: 200px;
+				max-width: 980px;
+				margin: 0 auto;
+				padding: 45px;
+			}
+            #validator {
+            	border: 0;
+                width: 88px;
+                height:31px;
+            }
+		</style>
+	</head>
+	<body>
+        <div data-target="readme-toc.content" class="Box-body px-5 pb-5">
+    <article class="markdown-body entry-content container-lg"><h1><a title="Tescucho V2.0 - CISTAS" id="user-content-tescucho-v20---cistas" class="anchor" href="#tescucho-v20---cistas"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Tescucho V2.0 - CISTAS</h1>
+<p>A continuación elaboramos una visión general tanto de la arquitectura de las aplicaciones para el sistema Andriod, como del diseño específico de la Tescucho, con el objetivo de guiar rápidamente a los desarrolladores que quieran colaborar con el proyecto.</p>
+<h2><a title="Arquitectura de las Aplicaciones para Android" id="user-content-arquitectura-de-las-aplicaciones-para-android" class="anchor" href="#arquitectura-de-las-aplicaciones-para-android"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Arquitectura de las Aplicaciones para Android</h2>
+<p>Si bien existieron en un principio alguna <a href="https://www.google.com/search?q=site%3Astackoverflow.com+android+MVC" rel="nofollow">indefinición acerca de la mejor nomenclatura</a>, hoy contamos con una descripción oficial del equipo de Android de la arquitectura que debieran seguir las aplicaciones para dicho sistema operativo, para la cual elaboraron el siguiente diagrama:</p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://camo.githubusercontent.com/be9b0e8eb62e13a031031fb16e99f33c647da47908a21f451cb00d2c99fb9b31/68747470733a2f2f646576656c6f7065722e616e64726f69642e636f6d2f746f7069632f6c69627261726965732f6172636869746563747572652f696d616765732f66696e616c2d6172636869746563747572652e706e67"><img src="https://camo.githubusercontent.com/be9b0e8eb62e13a031031fb16e99f33c647da47908a21f451cb00d2c99fb9b31/68747470733a2f2f646576656c6f7065722e616e64726f69642e636f6d2f746f7069632f6c69627261726965732f6172636869746563747572652f696d616765732f66696e616c2d6172636869746563747572652e706e67" alt="Descripción oficial del equipo de Android de la arquitectura de una apliciación" data-canonical-src="https://developer.android.com/topic/libraries/architecture/images/final-architecture.png" ></a></p>
+<p>La manera en la que en general se entiende es la siguiente: una capa de nuestra aplicación expresará el diseño de nuestra interfaz con el usuario (archivos de <em>layout</em> en XML, clases <code>Activity</code> y <code>Fragment</code>), otra capa corresponde al modelo de datos internos necesarios para cumplir con el procesamiento que nuestra aplicación realiza (clases propias), y en medio existirá una capa que comunique las acciones del usuario que tiene impacto en el modelo así como que le informe a la interfaz que el modelo posee un dato actualizado (clase <code>ViewModel</code>).</p>
+<p>Parte de los recursos estáticos del proyecto incluye además del diseño en lenguaje de marcado XML, una colección de textos cuya centralización favorece la internacionalización (o traducción a otros idiomas), la identificación simbólica de colores que permite la creación de distintas paletas, y archivos de estilos y temas que sirven de manera jerárquica para la configuración de los atributos de cada elemento de la interfaz (como las "hojas de estilo" en HTML).</p>
+<h2><a title="El ciclo de vida de una Actividad" id="user-content-el-ciclo-de-vida-de-una-actividad" class="anchor" href="#el-ciclo-de-vida-de-una-actividad"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>El ciclo de vida de una Actividad</h2>
+<p>La organización de una aplicación en Android es por actividades, es decir, acciones o tareas únicas y específicas que se sirven también de una sola interfaz. La interacción de nuestra aplicación con el resto del sistema se ve así facilitada, ya que para algún recurso específico (un archivo, un contacto, una imagen) podemos ofrecer un tratamiento propio: mientras la aplicación de correo puede enviarlo a una dirección, nuestra aplicación podría editarlo, por ejemplo.</p>
+<p>Las actividades tiene un ciclo de vida que relaciona el estado de la actividad con los recursos que el sistema le ha asignado en base a la interacción (o su ausencia) con el usuario. La documentación oficia del equipo de desarrollo de Android la ejemplifica con el siguiente diagrama de estados:</p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://camo.githubusercontent.com/e83c37db864db206bee21d017bbb40638e9fef20d7493a5c4eff01888cd6499d/68747470733a2f2f646576656c6f7065722e616e64726f69642e636f6d2f67756964652f636f6d706f6e656e74732f696d616765732f61637469766974795f6c6966656379636c652e706e67"><img src="https://camo.githubusercontent.com/e83c37db864db206bee21d017bbb40638e9fef20d7493a5c4eff01888cd6499d/68747470733a2f2f646576656c6f7065722e616e64726f69642e636f6d2f67756964652f636f6d706f6e656e74732f696d616765732f61637469766974795f6c6966656379636c652e706e67" alt="Ciclo de vida de una actividad de acuerdo al equipo de desarrollo de Android" data-canonical-src="https://developer.android.com/guide/components/images/activity_lifecycle.png" ></a></p>
+<h2><a title="La librería Vosk" id="user-content-la-librería-vosk" class="anchor" href="#la-librería-vosk"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>La librería Vosk</h2>
+<p>La librería Vosk provee un <a href="https://github.com/alphacep/vosk-android-demo">ejemplo de uso en una aplicación para el sistema Android</a>, de donde hemos elaborado los diagramas de sequencia para reflejar la estructura dinámica que debiera seguir una actividad que la utilice.</p>
+<h3><a title="Creación de la actividad" id="user-content-creación-de-la-actividad" class="anchor" href="#creación-de-la-actividad"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Creación de la actividad</h3>
+<p>Ignorando las configuraciones de la interfaz, el ejemplo propone para el método de creación de la actividad la interacción entre entidades representada en el siguiente diagrama de secuencia:</p>
+<p><a target="_blank" rel="noopener noreferrer" href="oncreate.png"><img src="oncreate.png" alt="Diagrama de secuencia del método que crea la actividad" ></a></p>
+<p>Como se observa, luego de la configuración de la interfaz en el estado de inicio con el método privado <a href="https://github.com/alphacep/vosk-android-demo/blob/248f40de2449a6185a9e7b3fb9d985aa5221312c/app/src/main/java/org/vosk/demo/VoskActivity.java#L152"><code>setUiState()</code></a>, se activa la bitácora de seguimiento de la librería Vosk (mediante <a href="https://github.com/alphacep/vosk-api/blob/master/android/lib/src/main/java/org/vosk/LibVosk.java"><code>LibVosk</code></a>) y verifica que posea los permisos de acceso a la grabación de audio. Si no es así, los solicita. En caso de tener ya habilitada la grabación, inicia el modelo tal cual en el diagrama siguiente:</p>
+<p><a target="_blank" rel="noopener noreferrer" href="initModel.png"><img src="initModel.png" alt="Diagrama de secuencia del método que inicia el modelo" ></a></p>
+<p>Lo anterior no es más que la deserialización del modelo (de clase <a href="https://github.com/alphacep/vosk-api/blob/master/android/lib/src/main/java/org/vosk/Model.java"><code>Model</code></a>) para la librería Vosk mediante el uso del <a href="https://github.com/alphacep/vosk-api/blob/master/android/lib/src/main/java/org/vosk/android/StorageService.java"><code>StorageService</code></a> que provee la librería, su almacenamiento en el atributo <code>model</code> y la configuración de la interfaz de usuario en caso de éxito, o el establecimiento de la interfaz en estado de error en caso de surgir algún inconveniente.</p>
+<h3><a title="Destrucción de la actividad" id="user-content-destrucción-de-la-actividad" class="anchor" href="#destrucción-de-la-actividad"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Destrucción de la actividad</h3>
+<p>Como es habitual, antes de remover completamente la actividad del sistema, es necesaria una acción de limpieza que libere los recursos utilizados. Para ello, los desarrolladores del equipo de Vosk proponen en su ejemplo la siguiente secuencia:</p>
+<p><a target="_blank" rel="noopener noreferrer" href="onDestroy.png"><img src="onDestroy.png" alt="Diagrama de secuencia del método que destruye la actividad" ></a></p>
+<p>Sucintamente, de lo que se trata es de detener los servicios registrados en caso de que ya hayan sido configurados con la asistencia de las clases <a href="https://github.com/alphacep/vosk-api/blob/master/android/lib/src/main/java/org/vosk/android/SpeechService.java"><code>SpeechService</code></a> y <a href="https://github.com/alphacep/vosk-api/blob/master/android/lib/src/main/java/org/vosk/android/SpeechStreamService.java"><code>SpeechStreamService</code></a> provistas por la librería.</p>
+<h3><a title="Registración de los servicios" id="user-content-registración-de-los-servicios" class="anchor" href="#registración-de-los-servicios"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Registración de los servicios</h3>
+<p>Los servicios que la actividad precisa registrar para la captura de audio, se realizan mediante petición y asistencia de la interfaz de usuario, cuyos eventos son controlados por los métodos <a href="https://github.com/alphacep/vosk-android-demo/blob/248f40de2449a6185a9e7b3fb9d985aa5221312c/app/src/main/java/org/vosk/demo/VoskActivity.java#L201"><code>recognizeFile()</code></a> y <a href="https://github.com/alphacep/vosk-android-demo/blob/248f40de2449a6185a9e7b3fb9d985aa5221312c/app/src/main/java/org/vosk/demo/VoskActivity.java#L224"><code>recognizeMicrophone()</code></a>. Siendo este último de nuestro interés, representamos su comportamiento dinámico mediante el siguiente diagrama de secuencia:</p>
+<p><a target="_blank" rel="noopener noreferrer" href="recognizeMicrophone.png"><img src="recognizeMicrophone.png" alt="Diagrama de secuencia para el registro del servicio de captura del micrófono" ></a></p>
+<p>El resultado de los servicios es comunicado de manera asincrónica a la actividad, la que debe entonces implementar la interfaz <a href="https://github.com/alphacep/vosk-api/blob/master/android/lib/src/main/java/org/vosk/android/RecognitionListener.java"><code>RecognitionListener</code></a> definida en la librería, con los métodos <a href="https://github.com/alphacep/vosk-android-demo/blob/248f40de2449a6185a9e7b3fb9d985aa5221312c/app/src/main/java/org/vosk/demo/VoskActivity.java#L124"><code>onResult</code></a>, <a href="https://github.com/alphacep/vosk-android-demo/blob/248f40de2449a6185a9e7b3fb9d985aa5221312c/app/src/main/java/org/vosk/demo/VoskActivity.java#L129"><code>onFinalResult</code></a>, <a href="https://github.com/alphacep/vosk-android-demo/blob/248f40de2449a6185a9e7b3fb9d985aa5221312c/app/src/main/java/org/vosk/demo/VoskActivity.java#L138"><code>onPartialResult</code></a>, <a href="https://github.com/alphacep/vosk-android-demo/blob/248f40de2449a6185a9e7b3fb9d985aa5221312c/app/src/main/java/org/vosk/demo/VoskActivity.java#L143"><code>onError</code></a> y <a href="https://github.com/alphacep/vosk-android-demo/blob/248f40de2449a6185a9e7b3fb9d985aa5221312c/app/src/main/java/org/vosk/demo/VoskActivity.java#L148"><code>onTimeout</code></a>.</p>
+<h2><a title="Estructura estática de nuestra aplicación" id="user-content-estructura-estática-de-nuestra-aplicación" class="anchor" href="#estructura-estática-de-nuestra-aplicación"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Estructura estática de nuestra aplicación</h2>
+<h3><a title="Descripción de archivos" id="user-content-descripción-de-archivos" class="anchor" href="#descripción-de-archivos"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Descripción de archivos</h3>
+<p>Por motivos históricos y para distribuir un proyecto que fuera rápidamente compilables, el repositorio del código fuente de nuestra aplicación contiene directorios y archivos propios de la configuración del entorno de desarrollo. Obviaremos dichos archivos en la siguiente tabla descriptiva:</p>
+<table>
+<thead>
+<tr>
+<th>Ruta</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.gradle\</td>
+<td>Carpeta con configuraciones propias de Gradle</td>
+</tr>
+<tr>
+<td>.idea\</td>
+<td>Carpeta con configuraciones propias de Android Studio</td>
+</tr>
+<tr>
+<td>COMPILING.md</td>
+<td>Instrucciones de compilación</td>
+</tr>
+<tr>
+<td>COPYING</td>
+<td>Licencia</td>
+</tr>
+<tr>
+<td>docs\</td>
+<td>Carpeta con página de la aplicación</td>
+</tr>
+<tr>
+<td>Readme.md</td>
+<td>Presentacion del repositorio</td>
+</tr>
+<tr>
+<td>aars\</td>
+<td>Directorio con las librerías externas</td>
+</tr>
+<tr>
+<td>aars\kaldi-android-5.2</td>
+<td>Directorio de la librería Kaldi</td>
+</tr>
+<tr>
+<td>aars\kaldi-android-5.2.aar</td>
+<td>Librería Kaldi</td>
+</tr>
+<tr>
+<td>aars\kaldi-android-5.2\AndroidManifest.xml</td>
+<td>Manifiesto de la librería</td>
+</tr>
+<tr>
+<td>aars\kaldi-android-5.2\classes.jar</td>
+<td>Clases de puente para java</td>
+</tr>
+<tr>
+<td>aars\kaldi-android-5.2\R.txt</td>
+<td>Descriptor de recursos</td>
+</tr>
+<tr>
+<td>aars\kaldi-android-5.2\jni</td>
+<td>Directorio con las implementaciones nativas de cada arquitectura</td>
+</tr>
+<tr>
+<td>app\src\main</td>
+<td>Directorio con código fuente de la aplicación</td>
+</tr>
+<tr>
+<td>app\src\main\AndroidManifest.xml</td>
+<td>Manifiesto de la aplicación</td>
+</tr>
+<tr>
+<td>app\src\main\ic_oreja-playstore.png</td>
+<td>Logo para la Playstore de Google</td>
+</tr>
+<tr>
+<td>app\src\main\java</td>
+<td>Directorio del código java</td>
+</tr>
+<tr>
+<td>app\src\main\java...\Clasico.java</td>
+<td>Actividad del modo secuencial</td>
+</tr>
+<tr>
+<td>app\src\main\java...\Configuracion.java</td>
+<td>Actividad de configuración</td>
+</tr>
+<tr>
+<td>app\src\main\java...\Inicio.java</td>
+<td>Actividad de inicio</td>
+</tr>
+<tr>
+<td>app\src\main\java...\KaldiActivity.java</td>
+<td>Actividad de modo continuo</td>
+</tr>
+<tr>
+<td>app\src\main\res</td>
+<td>Directorio de recursos de la aplicación</td>
+</tr>
+<tr>
+<td>app\src\main\res\drawable</td>
+<td>Directorio con imágenes y widgets</td>
+</tr>
+<tr>
+<td>app\src\main\res\layout</td>
+<td>Directorio con diseños de pantallas</td>
+</tr>
+<tr>
+<td>app\src\main\res\layout\clasico.xml</td>
+<td>Pantalla en modo secuencial</td>
+</tr>
+<tr>
+<td>app\src\main\res\layout\inicio.xml</td>
+<td>Pantalla de inicio</td>
+</tr>
+<tr>
+<td>app\src\main\res\layout\main.xml</td>
+<td>Pantalla en modo continuo</td>
+</tr>
+<tr>
+<td>app\src\main\res\layout\settings_activity.xml</td>
+<td>Pantalla de configuració</td>
+</tr>
+<tr>
+<td>app\src\main\res\menu</td>
+<td>Directorio con recursos de menú</td>
+</tr>
+<tr>
+<td>app\src\main\res\values</td>
+<td>Directorio con recursos referenciables</td>
+</tr>
+<tr>
+<td>app\src\main\res\values\colors.xml</td>
+<td>Listado de colores</td>
+</tr>
+<tr>
+<td>app\src\main\res\values\strings.xml</td>
+<td>Listado de textos estáticos</td>
+</tr>
+<tr>
+<td>app\src\main\res\values\styles.xml</td>
+<td>Hoja de atributos estáticos  de componentes</td>
+</tr>
+<tr>
+<td>models\</td>
+<td>Carpeta con el modelo de lenguaje para la librería Kaldi</td>
+</tr>
+</tbody>
+</table>
+</article>
+  </div>
+		<p>
+			<a href="https://jigsaw.w3.org/css-validator/check/referer">
+				<img id="validator"
+					src="https://jigsaw.w3.org/css-validator/images/vcss"
+					alt="¡CSS Válido!" />
+			</a>
+		</p>
+	</body>
+</html>
