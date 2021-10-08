@@ -99,5 +99,6 @@
         android:layout_gravity="bottom"
         android:layout_marginBottom="8dp"
         android:layout_marginHorizontal="16dp"
+        android:contentDescription="@string/button_change_sequential_mode"
         app:srcCompat="@drawable/ic_repeat_one_24px" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
