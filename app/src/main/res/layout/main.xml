@@ -15,6 +15,7 @@
         android:focusable="true"
         android:layout_gravity="top|end"
         android:layout_margin="16dp"
+        android:contentDescription="@string/button_share"
         android:visibility="invisible"
         app:srcCompat="@drawable/ic_share_24px"/>
 

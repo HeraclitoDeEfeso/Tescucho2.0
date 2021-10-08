@@ -20,6 +20,7 @@
     <string name="button_stop_listening">Detener la transcripción</string>
     <string name="button_change_continuos_mode">Cambiar a modo continuo</string>
     <string name="button_change_sequential_mode">Cambiar a modo secuencial</string>
+    <string name="button_share">Compartir la transcripción</string>
 
     <!-- Preference Titles -->
     <string name="messages_header">Messages</string>
