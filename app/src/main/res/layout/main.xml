@@ -67,7 +67,8 @@
             android:layout_centerHorizontal="true"
             android:layout_width="wrap_content"
             android:layout_height="20dp"
-            android:layout_above="@+id/imagenLogo2"/>
+            android:layout_above="@+id/imagenLogo2"
+            android:labelFor="@id/seekBar"/>
 
             <ImageView
                 android:id="@+id/imagenLogo2"
