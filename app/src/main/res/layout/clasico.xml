@@ -100,6 +100,7 @@
         android:layout_gravity="bottom"
         android:layout_marginHorizontal="16dp"
         android:layout_marginBottom="8dp"
+        android:contentDescription="@string/button_change_continuos_mode"
         app:srcCompat="@drawable/ic_all_inclusive_24px" />
 
 

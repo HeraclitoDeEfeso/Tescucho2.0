@@ -18,6 +18,7 @@
     <string name="title_activity_configuracion">Configuracion</string>
     <string name="button_start_listening">Iniciar la transcripción</string>
     <string name="button_stop_listening">Detener la transcripción</string>
+    <string name="button_change_continuos_mode">Cambiar a modo continuo</string>
 
     <!-- Preference Titles -->
     <string name="messages_header">Messages</string>
