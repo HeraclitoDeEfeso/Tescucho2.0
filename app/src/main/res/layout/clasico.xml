@@ -87,6 +87,7 @@
         android:layout_gravity="bottom|end"
         android:layout_marginHorizontal="16dp"
         android:layout_marginBottom="8dp"
+        android:contentDescription="@string/button_stop_listening"
         android:src="@drawable/oreja_negra"
         android:theme="@style/TemaOscuro2"
         android:visibility="invisible" />
