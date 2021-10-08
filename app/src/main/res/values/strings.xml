@@ -16,6 +16,8 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="title_activity_inicio">FullscreenActivity</string>
     <string name="title_activity_configuracion">Configuracion</string>
+    <string name="button_start_listening">Iniciar la transcripción</string>
+
 
     <!-- Preference Titles -->
     <string name="messages_header">Messages</string>
