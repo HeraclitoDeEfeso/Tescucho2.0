@@ -23,7 +23,7 @@
         </activity>
         <activity
             android:name="appinventor.ai_andres_piegari.TeEscuchoDCH6j.Clasico"
-            android:label="TESCUCHO - SECUENCIAL">
+            android:label="Tescucho \u2014 Secuencial">
 
         </activity>
         <activity
