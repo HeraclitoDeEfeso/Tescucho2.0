@@ -23,12 +23,12 @@
         </activity>
         <activity
             android:name="appinventor.ai_andres_piegari.TeEscuchoDCH6j.Clasico"
-            android:label="TESCUCHO - SECUENCIAL">
+            android:label="Tescucho \u2014 Secuencial">
 
         </activity>
         <activity
             android:name="appinventor.ai_andres_piegari.TeEscuchoDCH6j.KaldiActivity"
-            android:label="TESCUCHO - CONTINUO">
+            android:label="Tescucho \u2014 Continuo">
         </activity>
     </application>
 

@@ -54,16 +54,17 @@
             android:layout_width="wrap_content"
             android:layout_height="20dp"
             android:layout_above="@id/imagenLogo"
+            android:labelFor="@id/seekBar2"
             />
 
         <ImageView
             android:id="@+id/imagenLogo"
             android:layout_width="158dp"
             android:layout_height="68dp"
-            android:layout_marginBottom="5dp"
-            android:src="@drawable/logo_sin_oreja"
             android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"/>
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="5dp"
+            android:src="@drawable/logo_sin_oreja" />
 
     </RelativeLayout>
 
@@ -74,24 +75,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_marginBottom="8dp"
         android:layout_marginHorizontal="16dp"
-        android:src="@drawable/oreja_negra"
+        android:layout_marginBottom="8dp"
+        android:contentDescription="@string/button_start_listening"
         android:onClick="grabarClasico"
-        />
+        android:src="@drawable/oreja_negra" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/recognize_mic_rojo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_marginBottom="8dp"
         android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="8dp"
+        android:contentDescription="@string/button_stop_listening"
         android:src="@drawable/oreja_negra"
-        android:visibility="invisible"
         android:theme="@style/TemaOscuro2"
-    />
-
+        android:visibility="invisible" />
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -99,10 +99,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:layout_marginBottom="8dp"
         android:layout_marginHorizontal="16dp"
-        app:srcCompat="@drawable/ic_all_inclusive_24px"
-        />
+        android:layout_marginBottom="8dp"
+        android:contentDescription="@string/button_change_continuos_mode"
+        app:srcCompat="@drawable/ic_all_inclusive_24px" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
