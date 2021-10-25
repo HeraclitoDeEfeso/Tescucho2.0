@@ -15,6 +15,7 @@
         android:focusable="true"
         android:layout_gravity="top|end"
         android:layout_margin="16dp"
+        android:contentDescription="@string/button_share"
         android:visibility="invisible"
         app:srcCompat="@drawable/ic_share_24px"/>
 
@@ -66,7 +67,8 @@
             android:layout_centerHorizontal="true"
             android:layout_width="wrap_content"
             android:layout_height="20dp"
-            android:layout_above="@+id/imagenLogo2"/>
+            android:layout_above="@+id/imagenLogo2"
+            android:labelFor="@id/seekBar"/>
 
             <ImageView
                 android:id="@+id/imagenLogo2"
@@ -87,7 +89,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_marginBottom="8dp"
-        android:layout_marginHorizontal="16dp"/>
+        android:layout_marginHorizontal="16dp"
+        android:contentDescription="@string/button_start_listening"/>
 
 
 
@@ -99,5 +102,6 @@
         android:layout_gravity="bottom"
         android:layout_marginBottom="8dp"
         android:layout_marginHorizontal="16dp"
+        android:contentDescription="@string/button_change_sequential_mode"
         app:srcCompat="@drawable/ic_repeat_one_24px" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

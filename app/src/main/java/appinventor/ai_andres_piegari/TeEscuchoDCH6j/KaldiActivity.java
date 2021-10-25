@@ -17,6 +17,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
+import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -471,6 +472,7 @@ public class KaldiActivity extends AppCompatActivity implements
                 //Se habilitan los botones de compartir y se vuelve a mostrar la oreja en el de reconocer
                 recMic.setEnabled(true);
                 recMic.setImageResource(R.drawable.oreja_negra);
+                recMic.setContentDescription(getString(R.string.button_start_listening));
                 shareText = findViewById(R.id.compartir);
                 shareText.setVisibility(View.VISIBLE);
                 statusUi=3;
@@ -494,6 +496,8 @@ public class KaldiActivity extends AppCompatActivity implements
                 recMic = findViewById(R.id.recognize_mic);
                 recMic.setEnabled(true);
                 recMic.setImageResource(R.drawable.ic_pause_24px);
+                // Cambiar texto descriptivo
+                recMic.setContentDescription(getString(R.string.button_stop_listening));
                 Vibrator vibrator2 = (Vibrator) getSystemService(VIBRATOR_SERVICE);
                 vibrator2.vibrate(150);
                 statusUi=4;
