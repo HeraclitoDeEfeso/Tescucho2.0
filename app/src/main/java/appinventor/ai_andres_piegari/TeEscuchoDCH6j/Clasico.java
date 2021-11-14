@@ -127,7 +127,7 @@ public class Clasico extends AppCompatActivity {
 
         // Cargo texto principal
         resultView = findViewById(R.id.result_text2);
-        resultView.setText("Presione en la oreja para comenzar a hablar");
+        resultView.setText(R.string.ready);
 
         // Le asigno a la barra desplegable que modifique el tamaño del texto
         sB = findViewById(R.id.seekBar2);
