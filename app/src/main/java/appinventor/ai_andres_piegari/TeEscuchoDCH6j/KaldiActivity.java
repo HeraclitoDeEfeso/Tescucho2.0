@@ -92,6 +92,7 @@ public class KaldiActivity extends AppCompatActivity implements
     static boolean continuoActiva = false;
     static Activity actividad;
     private boolean tooltip_shown = false;
+    private boolean sentence_started = false;
 
     // Creación de la barra superior, para que aparezca la ruedita de configuración
     @Override
@@ -418,7 +419,10 @@ public class KaldiActivity extends AppCompatActivity implements
     // y cada tanto tira un global. Cuando tira el global se ejecuta este método.
     // lo que hice fue tomar el texto guardado en resultView y meterlo en la variable Texto Completo,para ir concatenando.
     public void onResult(String hypothesis) {
-        TextoCompleto = resultView.getText().toString() +'\n';
+        if(sentence_started) {
+            TextoCompleto = resultView.getText().toString() + ".\n";
+            sentence_started = false;
+        }
     }
 
     @Override
@@ -430,9 +434,14 @@ public class KaldiActivity extends AppCompatActivity implements
 
     public void onPartialResult(String hypothesis) {
         String palabra3 = hypothesis.substring(17,hypothesis.length()-3);
-        String palabra4 = TextoCompleto + palabra3 ;
-        resultView.setText(palabra4.toUpperCase());
-
+        StringBuilder palabra4 = new StringBuilder();
+        palabra4.append(TextoCompleto);
+        if(palabra3.length() > 0) {
+            palabra4.append(palabra3.substring(0, 1).toUpperCase());
+            palabra4.append(palabra3.substring(1));
+            sentence_started = true;
+        }
+        resultView.setText(palabra4.toString());
     }
 
     @Override
@@ -498,7 +507,8 @@ public class KaldiActivity extends AppCompatActivity implements
                 //Acá se entra cuando se está reconociendo.
                 // Le agregue el iff con resetApp por si el usuario rotó el celular durante una transcripción
                 if(!resetApp){
-                resultView.setText(getString(R.string.say_something));}
+                    resultView.setText("");
+                }
                 // Habilitamos el botón de reconocer y le ponemos el ícono pausa.
                 recMic = findViewById(R.id.recognize_mic);
                 recMic.setEnabled(true);
@@ -514,8 +524,6 @@ public class KaldiActivity extends AppCompatActivity implements
 
     private void setErrorState(String message) {
         resultView.setText(message);
-
-
         findViewById(R.id.recognize_mic).setEnabled(false);
     }
 
@@ -548,14 +556,11 @@ public class KaldiActivity extends AppCompatActivity implements
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        TextoCompleto = resultView.getText().toString() +'\n';
-        outState.putString("texto", TextoCompleto.toUpperCase());
+        outState.putString("texto", TextoCompleto);
         outState.putInt("status", statusUi);
         if(statusUi==4){
         outState.putBoolean("reset",true);
         }
-
-
     }
 
     @Override
