@@ -4,6 +4,7 @@ package appinventor.ai_andres_piegari.TeEscuchoDCH6j;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -90,6 +91,7 @@ public class KaldiActivity extends AppCompatActivity implements
     public static final  boolean MODO_OSCURO = false;
     static boolean continuoActiva = false;
     static Activity actividad;
+    private boolean tooltip_shown = false;
 
     // Creación de la barra superior, para que aparezca la ruedita de configuración
     @Override
@@ -226,29 +228,22 @@ public class KaldiActivity extends AppCompatActivity implements
         //En el caso del modo continuo, tuve que hacer unas cosas para que cuando se gire el teléfono
         //no vueva  a empezar. Por eso está la variblae resetApp. Ahora lo que hago es cambiar la gráfica
         //Si se resetea la app, para que siga grabando.
-
-
         if(resetApp){
             recMic.setImageResource(R.drawable.ic_pause_24px);
             recMic.setEnabled(true);
         }
         else{
             recMic.setImageResource(R.drawable.oreja_negra);
-
         }
 
-
         if(statusUi==4){
-        setUiState(STATE_MIC);
+            setUiState(STATE_MIC);
         }
         else{
             setUiState(STATE_START);
         }
 
-
-
         // Check if user has given permission to record audio
-
         int permissionCheck = ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.RECORD_AUDIO);
         if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECORD_AUDIO}, PERMISSIONS_REQUEST_RECORD_AUDIO);
@@ -287,6 +282,18 @@ public class KaldiActivity extends AppCompatActivity implements
     public void onStart() {
         super.onStart();
         continuoActiva = false;
+
+        // Se lee contador de inicios https://stackoverflow.com/a/25032996
+        // Se muestra un Toast explicando el modo continuo
+        SharedPreferences prefs = getSharedPreferences("GLOBAL_PREFERENCES", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        int init_counter = prefs.getInt("init_counter", 0);
+        boolean tooltip_shown = prefs.getBoolean("tooltip_shown_continuous_mode", false);
+        if(init_counter < 3 && !tooltip_shown){
+            Toast.makeText(this, R.string.tooltip_continuos_mode, Toast.LENGTH_LONG).show();
+            editor.putBoolean("tooltip_shown_continuous_mode", true);
+            editor.apply();
+        }
     }
 
 

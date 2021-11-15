@@ -5,6 +5,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceManager;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -52,6 +53,7 @@ public class Clasico extends AppCompatActivity {
     int seekValue;
     public String TextoCompleto = " ";
     static Boolean clasicoActiva = false;
+
 
     // Creación de la barra superior, para que aparezca la ruedita de configuración
     @Override
@@ -246,6 +248,18 @@ public class Clasico extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         clasicoActiva = false;
+
+        // Se lee contador de inicios https://stackoverflow.com/a/25032996
+        // Se muestra un Toast explicando el modo secuencial
+        SharedPreferences prefs = getSharedPreferences("GLOBAL_PREFERENCES", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        int init_counter = prefs.getInt("init_counter", 0);
+        boolean tooltip_shown = prefs.getBoolean("tooltip_shown_sequence_mode", false);
+        if(init_counter < 3 && !tooltip_shown){
+            Toast.makeText(this, R.string.tooltip_sequence_mode, Toast.LENGTH_LONG).show();
+            editor.putBoolean("tooltip_shown_sequence_mode", true);
+            editor.apply();
+        }
     }
 
 

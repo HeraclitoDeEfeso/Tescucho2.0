@@ -21,6 +21,8 @@
     <string name="button_change_continuos_mode">Cambiar a modo continuo</string>
     <string name="button_change_sequential_mode">Cambiar a modo secuencial</string>
     <string name="button_share">Compartir la transcripción</string>
+    <string name="tooltip_sequence_mode">En el modo secuencial la escucha durará unos segundos y las transcripciones no se acumulan. Cambie a modo continuo presionando el botón de abajo a la izquierda</string>
+    <string name="tooltip_continuos_mode">En el modo continuo la escucha durará hasta que se detenga manualmente y las transcripciones se acumularán en un único texto. Cambie a modo secuencial presionando el botón de abajo a la izquierda</string>
 
     <!-- Preference Titles -->
     <string name="messages_header">Messages</string>
