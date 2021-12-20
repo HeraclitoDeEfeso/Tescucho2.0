@@ -11,12 +11,12 @@
         android:id="@+id/boton_settings"
         android:layout_width="160dp"
         android:layout_height="60dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
 
         android:layout_below="@id/settings"
-        android:text="Aplicar cambios y reiniciar App"
+        android:layout_centerInParent="true"
+        android:backgroundTint="@color/negro"
         android:onClick="aplicar_cambios"
-        android:backgroundTint="@color/fondo_modoclaro"/>
+        android:text="Aplicar cambios y reiniciar App"
+        android:textColor="@color/naranja" />
 
 </RelativeLayout>
