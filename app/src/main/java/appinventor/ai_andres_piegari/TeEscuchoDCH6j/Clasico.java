@@ -111,11 +111,9 @@ public class Clasico extends AppCompatActivity {
 
         setContentView(R.layout.clasico);
 
-        //En el caso de que el modo sea claro, le pongo fondo gris a la parte inferior.
-        if (!modoOscuro) {
-            abajo = findViewById(R.id.abajo_marco);
-            abajo.setBackgroundColor(getResources().getColor(R.color.fondo_modoclaro))
-            ;
+        //En el caso de que el modo sea oscuro, le pongo fondo negro al texto.
+        if (modoOscuro) {
+            findViewById(R.id.marco_texto_secuencial).setBackgroundColor(getResources().getColor(R.color.negro));
         }
 
 

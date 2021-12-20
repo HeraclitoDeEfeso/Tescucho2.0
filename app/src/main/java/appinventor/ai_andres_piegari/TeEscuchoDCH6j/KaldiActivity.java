@@ -18,8 +18,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
-import android.view.accessibility.AccessibilityNodeInfo;
-import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -80,7 +78,6 @@ public class KaldiActivity extends AppCompatActivity implements
     FloatingActionButton recMic;
     FloatingActionButton shareText;
     SeekBar sB;
-    RelativeLayout abajo;
     int seekValue;
     public String TextoCompleto = " ";
     public Boolean resetApp = false;
@@ -149,21 +146,22 @@ public class KaldiActivity extends AppCompatActivity implements
         //Acá se toma como pantalla lo que está configurado en el archivo clasico.xml
         setContentView(R.layout.main);
 
-        //En el caso de que el modo sea claro, le pongo fondo gris a la parte inferior.
-        if (!modoOscuro) {
-            abajo = findViewById(R.id.abajo_marco2);
-            abajo.setBackgroundColor(getResources().getColor(R.color.fondo_modoclaro))
-            ;
-        }
-
-        //Configuración del texto de abajo de la barra. En caso de que sea modo claro, le pongo color blanco
+        //Configuración del texto de abajo de la barra.
         textoBarra= findViewById(R.id.texto_barra);
         textoBarra.setText("Deslice la barra para cambiar el tamaño de la letra");
 
+        /*
+        // Eliminado "En caso de que sea modo claro, le pongo color blanco" porque va estático ahora
         if (!modoOscuro) {
 
             textoBarra.setTextColor(getResources().getColor(R.color.blanco));
             ;
+        }
+        */
+
+        //En el caso de que el modo sea oscuro, le pongo fondo negro al texto.
+        if (modoOscuro) {
+            findViewById(R.id.marco_texto_continuo).setBackgroundColor(getResources().getColor(R.color.negro));
         }
 
         // Cargo texto principal
