@@ -30,20 +30,21 @@
         android:layout_height="match_parent">
 
         <RelativeLayout
+            android:id="@+id/marco_texto_continuo"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_above="@id/abajo_marco2">
 
-        <TextView
-            android:id="@+id/result_text"
-            android:textSize="30sp"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            <TextView
+                android:id="@+id/result_text"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
 
-            android:layout_centerInParent="true"
-            android:scrollbars="vertical"
-            android:gravity="bottom"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:gravity="bottom"
+                android:scrollbars="vertical"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="30sp" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -51,33 +52,38 @@
             android:layout_width="match_parent"
             android:layout_height="140dp"
             android:layout_alignParentBottom="true"
-            >
+            android:background="@color/negro">
 
-        <SeekBar
-            android:id="@+id/seekBar"
-            android:max="30"
-            android:layout_centerHorizontal="true"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_above="@id/texto_barra"/>
+            <SeekBar
+                android:id="@+id/seekBar"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_above="@id/texto_barra"
+                android:layout_centerHorizontal="true"
+                android:max="30"
+                android:progressBackgroundTint="@color/blanco"
+                android:progressBackgroundTintMode="screen"
+                android:progressTint="@color/blanco"
+                android:secondaryProgressTint="@color/blanco" />
 
-        <TextView
+            <TextView
 
-            android:id="@+id/texto_barra"
-            android:layout_centerHorizontal="true"
-            android:layout_width="wrap_content"
-            android:layout_height="20dp"
-            android:layout_above="@+id/imagenLogo2"
-            android:labelFor="@id/seekBar"/>
+                android:id="@+id/texto_barra"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_above="@+id/imagenLogo2"
+                android:layout_centerHorizontal="true"
+                android:labelFor="@id/seekBar"
+                android:textColor="@color/blanco" />
 
             <ImageView
                 android:id="@+id/imagenLogo2"
                 android:layout_width="158dp"
                 android:layout_height="68dp"
-                android:layout_marginBottom="5dp"
-                android:src="@drawable/logo_sin_oreja"
                 android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"/>
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="5dp"
+                android:src="@drawable/tescucho_blanco" />
 
         </RelativeLayout>
 

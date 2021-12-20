@@ -2,6 +2,8 @@
 <resources>
 
     <string name="app_name">Tescucho</string>
+    <string name="app_logo">Logo de la aplicación Tescucho</string>
+    <string name="school_logo">Logo del Centro Integral de Servicios Tecnológicos de Acústica y Sonido perteneciente a la Universidad Nacional de Tres de Febrero</string>
     <string name="recognize_file">Recognize File</string>
     <string name="recognize_microphone">Recognize Microphone</string>
     <string name="stop_microphone">Stop Microphone</string>

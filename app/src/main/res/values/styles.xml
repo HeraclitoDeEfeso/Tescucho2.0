@@ -2,11 +2,12 @@
 <resources>
 
     <style name="TemaClaro" parent ="Theme.AppCompat.Light">
-        <item name="colorAccent">#FF4D0D</item>
-        <item name="android:textColorPrimary">#000000</item>
-        <item name="android:textColorSecondary">#000000</item>
-        <item name="colorPrimary">#8c8c8c</item>
-        <item name="colorPrimaryDark">#666666</item>
+        <item name="colorAccent">@color/naranja</item>
+        <item name="android:textColorPrimary">@color/naranja</item>
+        <item name="android:textColorSecondary">@color/negro</item>
+        <item name="colorPrimary">@color/negro</item>
+        <!--item name="colorPrimaryDark">#666666</item-->
+        <item name="android:fontFamily">@font/roboto</item>
     </style>
 
     <style name="TemaClaro2" parent ="Theme.AppCompat.Light">
@@ -15,14 +16,15 @@
         <item name="android:textColorSecondary">#000000</item>
         <item name="colorPrimary">#8c8c8c</item>
         <item name="colorPrimaryDark">#666666</item>
-        <item name= "android:windowBackground">#666666</item>
+        <item name="android:windowBackground">#666666</item>
     </style>
 
     <style name="TemaOscuro" parent ="Theme.AppCompat">
-        <item name="colorAccent">#FF4D0D</item>
-
-        <item name="android:textColorPrimary">#FFFFFF</item>
-        <item name="android:textColorSecondary">#FFFFFF</item>
+        <item name="colorAccent">@color/naranja</item>
+        <item name="android:textColorPrimary">@color/negro</item>
+        <item name="android:textColorSecondary">@color/blanco</item>
+        <item name="colorPrimary">@color/naranja</item>
+        <item name="android:fontFamily">@font/roboto</item>
     </style>
 
     <style name="TemaOscuro2" parent ="Theme.AppCompat">
@@ -30,12 +32,14 @@
         <item name="android:textColorPrimary">#FFFFFF</item>
     </style>
 
+    <style name="TemaInicio" parent="Theme.AppCompat.Light.NoActionBar"></style>
 
-    <style name="TemaInicio" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name= "android:colorPrimary">@color/naranja_fondo</item>
-        <item name= "android:colorPrimaryDark">@color/naranja_fondo</item>
-        <item name= "android:navigationBarColor">@color/naranja_fondo</item>
+    <style name="TemaConfiguracion" parent ="Theme.AppCompat.Light">
+        <item name="colorAccent">@color/negro</item>
+        <item name="android:textColorPrimary">@color/negro</item>
+        <item name="android:textColorSecondary">@color/negro</item>
+        <item name="colorPrimary">@color/naranja</item>
+        <item name="android:fontFamily">@font/roboto</item>
     </style>
-
 
 </resources>

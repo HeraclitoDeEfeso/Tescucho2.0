@@ -37,9 +37,9 @@ public class Configuracion extends AppCompatActivity {
 
         if (modoOscuro){
 
-        this.setTheme(R.style.TemaOscuro);}
+        this.setTheme(R.style.TemaConfiguracion);}
         else{
-            this.setTheme(R.style.TemaClaro);
+            this.setTheme(R.style.TemaConfiguracion);
         }
 
         setContentView(R.layout.settings_activity);

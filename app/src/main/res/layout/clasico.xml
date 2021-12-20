@@ -16,57 +16,62 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/abajo_marco">
-
-        <TextView
-            android:id="@+id/result_text2"
-            android:textSize="30sp"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:scrollbars="vertical"
-            android:gravity="bottom"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/abajo_marco"
-        android:layout_width="match_parent"
-        android:layout_height="140dp"
-        android:layout_alignParentBottom="true">
-
-        <SeekBar
-            android:id="@+id/seekBar2"
-            android:max="30"
-            android:layout_centerHorizontal="true"
+        <RelativeLayout
+            android:id="@+id/marco_texto_secuencial"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_above="@id/texto_barra2"/>
+            android:layout_height="match_parent"
+            android:layout_above="@+id/abajo_marco">
 
+            <TextView
+                android:id="@+id/result_text2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="bottom"
+                android:scrollbars="vertical"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="30sp" />
+        </RelativeLayout>
 
-        <TextView
-            android:id="@+id/texto_barra2"
-            android:layout_centerHorizontal="true"
-            android:layout_width="wrap_content"
-            android:layout_height="20dp"
-            android:layout_above="@id/imagenLogo"
-            android:labelFor="@id/seekBar2"
-            />
-
-        <ImageView
-            android:id="@+id/imagenLogo"
-            android:layout_width="158dp"
-            android:layout_height="68dp"
+        <RelativeLayout
+            android:id="@+id/abajo_marco"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
             android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="5dp"
-            android:src="@drawable/logo_sin_oreja" />
+            android:background="@color/negro">
 
-    </RelativeLayout>
+            <SeekBar
+                android:id="@+id/seekBar2"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_above="@id/texto_barra2"
+                android:layout_centerHorizontal="true"
+                android:max="30"
+                android:progressBackgroundTint="@color/blanco"
+                android:progressBackgroundTintMode="screen"
+                android:progressTint="@color/blanco"
+                android:secondaryProgressTint="@color/blanco" />
+
+
+            <TextView
+                android:id="@+id/texto_barra2"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_above="@id/imagenLogo"
+                android:layout_centerHorizontal="true"
+                android:labelFor="@id/seekBar2"
+                android:textColor="@color/blanco" />
+
+            <ImageView
+                android:id="@+id/imagenLogo"
+                android:layout_width="158dp"
+                android:layout_height="68dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="5dp"
+                android:src="@drawable/tescucho_blanco" />
+
+        </RelativeLayout>
 
     </RelativeLayout>
 

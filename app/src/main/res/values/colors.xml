@@ -5,4 +5,6 @@
     <color name="rojo_boton">#cc0000</color>
     <color name="fondo_modoclaro">#8c8c8c</color>
     <color name="blanco">#FFFFFF</color>
+    <color name="naranja">#ffa200</color>
+    <color name="negro">#181a1e</color>
 </resources>
