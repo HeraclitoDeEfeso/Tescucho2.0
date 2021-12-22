@@ -84,7 +84,7 @@
         android:layout_marginBottom="8dp"
         android:contentDescription="@string/button_start_listening"
         android:onClick="grabarClasico"
-        android:src="@drawable/oreja_negra" />
+        android:src="@drawable/ic_microfono" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/recognize_mic_rojo"
@@ -94,7 +94,7 @@
         android:layout_marginHorizontal="16dp"
         android:layout_marginBottom="8dp"
         android:contentDescription="@string/button_stop_listening"
-        android:src="@drawable/oreja_negra"
+        android:src="@drawable/ic_microfono"
         android:theme="@style/TemaOscuro2"
         android:visibility="invisible" />
 
@@ -107,7 +107,7 @@
         android:layout_marginHorizontal="16dp"
         android:layout_marginBottom="8dp"
         android:contentDescription="@string/button_change_continuos_mode"
-        app:srcCompat="@drawable/ic_all_inclusive_24px" />
+        app:srcCompat="@drawable/ic_continuo" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
