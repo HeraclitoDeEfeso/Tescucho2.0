@@ -228,11 +228,11 @@ public class KaldiActivity extends AppCompatActivity implements
         //no vueva  a empezar. Por eso está la variblae resetApp. Ahora lo que hago es cambiar la gráfica
         //Si se resetea la app, para que siga grabando.
         if(resetApp){
-            recMic.setImageResource(R.drawable.ic_pause_24px);
+            recMic.setImageResource(R.drawable.ic_pausa);
             recMic.setEnabled(true);
         }
         else{
-            recMic.setImageResource(R.drawable.oreja_negra);
+            recMic.setImageResource(R.drawable.ic_microfono);
         }
 
         if(statusUi==4){
@@ -485,7 +485,7 @@ public class KaldiActivity extends AppCompatActivity implements
                 recMic = findViewById(R.id.recognize_mic);
                 //Se habilitan los botones de compartir y se vuelve a mostrar la oreja en el de reconocer
                 recMic.setEnabled(true);
-                recMic.setImageResource(R.drawable.oreja_negra);
+                recMic.setImageResource(R.drawable.ic_microfono);
                 recMic.setContentDescription(getString(R.string.button_start_listening));
                 shareText = findViewById(R.id.compartir);
                 shareText.setVisibility(View.VISIBLE);
@@ -510,7 +510,7 @@ public class KaldiActivity extends AppCompatActivity implements
                 // Habilitamos el botón de reconocer y le ponemos el ícono pausa.
                 recMic = findViewById(R.id.recognize_mic);
                 recMic.setEnabled(true);
-                recMic.setImageResource(R.drawable.ic_pause_24px);
+                recMic.setImageResource(R.drawable.ic_pausa);
                 // Cambiar texto descriptivo
                 recMic.setContentDescription(getString(R.string.button_stop_listening));
                 Vibrator vibrator2 = (Vibrator) getSystemService(VIBRATOR_SERVICE);
@@ -567,7 +567,7 @@ public class KaldiActivity extends AppCompatActivity implements
         resetApp = savedInstanceState.getBoolean("reset");
 
         if(resetApp){
-            recMic.setImageResource(R.drawable.ic_pause_24px);
+            recMic.setImageResource(R.drawable.ic_pausa);
             TextoCompleto = savedInstanceState.getString("texto");
             resultView.setText(TextoCompleto);
             statusUi = savedInstanceState.getInt("status");
@@ -582,7 +582,7 @@ public class KaldiActivity extends AppCompatActivity implements
     @Override
     public void onBackPressed() {
         if (this.lastBackPressTime < System.currentTimeMillis() - 8000) {
-            toast = Toast.makeText(this, "Tescucho es una app desarrollada por ingenieros del CISTAS UNTREF.  \n Universidad Nacional de Tres de Febrero. \n Todos los derechos reservados - 2020. \n Presione nuevamente \" atrás \" para salir.", Toast.LENGTH_LONG);
+            toast = Toast.makeText(this, "Tescucho es una app desarrollada por ingenieros del CISTAS UNTREF. Universidad Nacional de Tres de Febrero. Presione nuevamente \" atrás \" para salir.", Toast.LENGTH_LONG);
             toast.show();
             this.lastBackPressTime = System.currentTimeMillis();
         } else {
