@@ -8,7 +8,7 @@
     <string name="recognize_microphone">Recognize Microphone</string>
     <string name="stop_microphone">Stop Microphone</string>
     <string name="preparing">Preparando sistema. Por favor espere. \n</string>
-    <string name="ready">Presione el botón con la imagen de la oreja para iniciar la transcripción\n</string>
+    <string name="ready">Presione el botón con el micrófono para iniciar la transcripción\n</string>
     <string name="failed">El sistema ha fallado. Por favor reinicie la app.%s\n</string>
     <string name="elapsed">Result %s elapsed %d milliseconds\n</string>
     <string name="starting">Preparando sistema\n</string>
